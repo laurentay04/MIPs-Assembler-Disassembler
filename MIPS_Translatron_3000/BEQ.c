@@ -1,8 +1,9 @@
 /*
-* Author: Lauren Taylor
-* Date: 10/29/2025
+* Author: Ol' Jim
+* Date: 06/13/2012
 * ByteForge Systems
 * MIPS-Translatron 3000
+* Edited by Lauren Taylor
 */
 
 
@@ -118,6 +119,7 @@ void beq_immd_bin(void) {
 	// tell the system the decoding is done
 	state = COMPLETE_DECODE;
 }
+
 
 
 
