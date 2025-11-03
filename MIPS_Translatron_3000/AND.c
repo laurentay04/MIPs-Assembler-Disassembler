@@ -1,8 +1,9 @@
-/**
- * Author: Lauren Taylor
- * Date: 10/29/2025
- * ByteForge Systems
- * MIPS-Translation 3000
+/*
+* Author: Ol' Jim
+* Date: 06/13/2012
+* ByteForge Systems
+* MIPS-Translatron 3000
+* Edited by Lauren Taylor
 */
 
 #include "Instruction.h"
@@ -122,5 +123,6 @@ void and_reg_bin(void) {
 	// tell the system the decoding is done
 	state = COMPLETE_DECODE;
 }
+
 
 
