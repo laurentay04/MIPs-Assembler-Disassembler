@@ -3,6 +3,7 @@
 * Date: 06/13/2012
 * ByteForge Systems
 * MIPS-Translatron 3000
+* Edited by Lauren Taylor
 */
 
 #include "Instruction.h"
@@ -119,6 +120,7 @@ void ori_immd_bin(void) {
 	// tell the system the decoding is done
 	state = COMPLETE_DECODE;
 }
+
 
 
 
