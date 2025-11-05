@@ -11,7 +11,7 @@
 void ori_immd_assm(void) {
 	// Checking that the opcode matches
 	// strcmp(string1, string2) returns 0 if they match
-	if (strcmp(OP_CODE, 'ORI' != 0)) {
+	if (strcmp(OP_CODE, "ORI") != 0) {
 		// If the result is not 0, the opcode is not ORI
 		state = WRONG_COMMAND;
 		return;
