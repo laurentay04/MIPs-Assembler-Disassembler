@@ -53,12 +53,10 @@ void div_reg_assm(void) {
     */
 
     // create binary
-    // R-type operation, so the layout is:
-    // opcode, rs, rt, rd, shamt, funct
-    // original code had setBits_str and setBits_num in wrong order
+
     setBits_str(31, "000000");          // op
-    setBits_num(20, PARAM1.value, 5);   // rs
-    setBits_num(25, PARAM2.value, 5);   // rt
+    setBits_num(20, PARAM2.value, 5);   // rs   - changed from PARAM1 to PARAM2
+    setBits_num(25, PARAM1.value, 5);   // rt   - changed from PARAM2 to PARAM1
     setBits_num(15, 0, 10);             // rd + shamt
     setBits_str(5, "011010");           // funct = 0x1A
    
@@ -89,8 +87,8 @@ void div_reg_bin(void) {
 
     // set tokens
     setOp("DIV");
-    setParam(2, REGISTER, Rs); 
-    setParam(1, REGISTER, Rt);  
+    setParam(1, REGISTER, Rs); // Changed the setParam so that Rs was 1 and Rt was 2
+    setParam(2, REGISTER, Rt);  
 
     // tell the system decoding is complete
     state = COMPLETE_DECODE;
