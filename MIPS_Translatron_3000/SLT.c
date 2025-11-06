@@ -4,7 +4,7 @@
 * ByteForge Systems
 * MIPS-Translatron 3000
 */
-
+// edited by Jonathan Panah
 #include "Instruction.h"
 
 void slt_reg_assm(void) {
@@ -63,21 +63,23 @@ void slt_reg_assm(void) {
 	/*
 		Putting the binary together
 	*/
+	// order before changes was, opcode funct Rd Rs Rt, so I fixed the order of them to the correct opcode Rs Rt Rd funct
+	// I also changed the bit # from 20 for Rd to 15 and Rt from 15 to 20
 
 	// Set the opcode
-	setBits_num(31, 0, 6);
+	setBits_num(31, 0, 6);		
 
 	// Set the funct 
 	setBits_str(5, "101010");
 
 	// set Rd
-	setBits_num(20, PARAM1.value, 5);
+	setBits_num(15, PARAM1.value, 5);
 
 	// set Rs
 	setBits_num(25, PARAM2.value, 5);
 
 	// set Rt
-	setBits_num(15, PARAM3.value, 5);
+	setBits_num(20, PARAM3.value, 5);
 
 	// tell the system the encoding is done
 	state = COMPLETE_ENCODE;
@@ -99,9 +101,9 @@ void slt_reg_bin(void) {
 		Finding values in the binary
 	*/
 	// getBits(start_bit, width)
-	uint32_t Rd = getBits(15, 5);
 	uint32_t Rs = getBits(25, 5);
 	uint32_t Rt = getBits(20, 5);
+	uint32_t Rd = getBits(15, 5);
 
 	/*
 		Setting Instuciton values
@@ -110,12 +112,13 @@ void slt_reg_bin(void) {
 	setOp("SLT");
 	//setCond_num(cond);
 	//setParam(param_num, param_type, param_value)
-	setParam(1, REGISTER, Rd); //destination
-	setParam(2, REGISTER, Rs); //first source register operand
-	setParam(3, REGISTER, Rt); //second source register operand
+	setParam(1, REGISTER, Rs); //destination
+	setParam(2, REGISTER, Rt); //first source register operand
+	setParam(3, REGISTER, Rd); //second source register operand
 
 	// tell the system the decoding is done
 	state = COMPLETE_DECODE;
 }
 
 
+	
