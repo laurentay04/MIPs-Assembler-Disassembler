@@ -3,7 +3,6 @@
 * Date: 06/13/2012
 * ByteForge Systems
 * MIPS-Translatron 3000
-* Edited By: Aliaksei Sapatsko
 */
 
 #include "Instruction.h"
@@ -81,10 +80,7 @@ void sub_reg_assm(void) {
 	setBits_num(25, PARAM2.value, 5);
 
 	// set Rt
-	setBits_num(20, PARAM3.value, 5);
-
-	// set shamt = 00000
-	setBits_num(10, 0, 5); 
+	setBits_num(20, PARAM3.value, 5); 
 
 	// tell the system the encoding is done
 	state = COMPLETE_ENCODE;
