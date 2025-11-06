@@ -4,6 +4,7 @@
 * ByteForge Systems
 * MIPS-Translatron 3000
 */
+
 // edited by Jonathan Panah
 
 #include "Instruction.h"
@@ -20,12 +21,20 @@ void div_reg_assm(void) {
 
 
     // Checks if given parameters are valid
-    if (PARAM1.type != REGISTER || PARAM2.type != REGISTER) {   // edited code here to combine the two if statements to make code more simple
+    if (PARAM1.type != REGISTER) {  
         state = MISSING_REG;
         return;
     }
-    if (PARAM1.value > 31 || PARAM2.value > 31) {   // edited code here to combine the two if statements to make code more simple
-        state = INVALID_REG;
+    if(PARAM2.type != REGISTER){
+        state = MISSING_REG;
+        return;
+    }
+    if (PARAM1.value > 31) { 
+        state = INVALID_REG;  
+        return;
+    }
+    if(PARAM2.value > 31){
+        state = INVALID_REG; 
         return;
     }
 
@@ -61,8 +70,8 @@ void div_reg_bin(void) {
 
     // set tokens
     setOp("DIV");
-    setParam(1, REGISTER, Rs);  // corrected from Param2 to Param1
-    setParam(2, REGISTER, Rt);  // corrected from Param1 to Param2
+    setParam(2, REGISTER, Rs); 
+    setParam(1, REGISTER, Rt);  
 
 
     state = COMPLETE_DECODE;
