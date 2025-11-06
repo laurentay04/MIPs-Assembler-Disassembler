@@ -3,6 +3,7 @@
 * Date: 06/13/2012
 * ByteForge Systems
 * MIPS-Translatron 3000
+* Edited By: Aliaksei Sapatsko
 */
 
 #include "Instruction.h"
@@ -94,7 +95,8 @@ void sub_reg_bin(void) {
 	// check_bits(start_bit, bit_string) returns 0 if the bit_string matches
 	// any x will be skipped
 	// If the manual shows (0), then the value of that bit doesnt matter
-	if (checkBits(31, "000000") != 0 || checkBits(5, "100010") != 0 ) { 	
+	//modified to check for the correct funct
+	if (checkBits(31, "000000") != 0 || checkBits(5, "100010") != 0 ) { 
 		state = WRONG_COMMAND;
 		return;
 	}
@@ -105,7 +107,7 @@ void sub_reg_bin(void) {
 		Finding values in the binary
 	*/
 	// getBits(start_bit, width)
- 	uint32_t Rs = getBits(25, 5); //confused about bit lengths here
+ 	uint32_t Rs = getBits(25, 5); 
     uint32_t Rt = getBits(20, 5);
     uint32_t Rd = getBits(15, 5);	
 
