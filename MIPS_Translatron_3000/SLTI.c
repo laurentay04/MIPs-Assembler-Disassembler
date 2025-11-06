@@ -65,11 +65,8 @@ void slti_reg_assm(void) {
 		Putting the binary together
 	*/
 
-	// Set the opcode
-	setBits_num(31, 0, 6);
-
-	// Set the funct 
-	setBits_str(5, "001010");
+	// Set the opcode, funct is defined here
+	setBits_str(31, "001010");
 
 	// set Rt
 	setBits_num(20, PARAM1.value, 5);
@@ -89,7 +86,8 @@ void slti_reg_bin(void) {
 	// check_bits(start_bit, bit_string) returns 0 if the bit_string matches
 	//  any x will be skipped
 	// If the manual shows (0), then the value of that bit doesnt matter
-	if (checkBits(31, "000000") != 0 || checkBits(5, "001010") != 0) {
+	// We only check the first 6 of the opcode for SLTI funct
+	if (checkBits(31, "001010") != 0) {
 		state = WRONG_COMMAND;
 		return;
 	}
