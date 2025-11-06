@@ -3,6 +3,7 @@
 * Date: 06/13/2012
 * ByteForge Systems
 * MIPS-Translatron 3000
+* Edited By: Aliaksei Sapatsko
 */
 
 #include "Instruction.h"
@@ -122,5 +123,6 @@ void sub_reg_bin(void) {
 	// tell the system the decoding is done
 	state = COMPLETE_DECODE;
 }
+
 
 
