@@ -74,11 +74,13 @@ void and_reg_assm(void) {
 	// Set the funct 
 	setBits_str(5, "100100");
 
+	// Changed the bit numbers for Rd and Rs to correctly print the assembly
+
 	// set Rd
-	setBits_num(25, PARAM1.value, 5);
+	setBits_num(15, PARAM1.value, 5);
 
 	// set Rs
-	setBits_num(15, PARAM2.value, 5);
+	setBits_num(25, PARAM2.value, 5);
 
 	// set Rt
 	setBits_num(20, PARAM3.value, 5);

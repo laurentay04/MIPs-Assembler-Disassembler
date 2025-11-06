@@ -114,7 +114,7 @@ void ori_immd_bin(void) {
 	//setParam(param_num, param_type, param_value)
 	setParam(1, REGISTER, Rd); //destination
 	setParam(2, REGISTER, Rs); //first source register operand
-	setParam(3, REGISTER, imm16); //immediate operand
+	setParam(3, IMMEDIATE, imm16); //immediate operand
 
 
 	// tell the system the decoding is done

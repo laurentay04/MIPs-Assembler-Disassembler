@@ -108,7 +108,7 @@ void machine2assembly(char* buff) {
 			puts("\nPlease select an option:");
 			puts("\t(1) Hexadecimal to Assembly");
 			puts("\t(2) Binary to Assembly");
-			puts("\t[3] Main Menu");
+			puts("\t(3) Main Menu");
 			printf("\n> ");
 
 			memset(buff, '\0', BUFF_SIZE);

@@ -49,7 +49,7 @@ void andi_immd_assm(void) {
 		return;
 	}
 
-	// Rd should be 31 or less since it is a 32 bit register
+	// Rs should be 31 or less since it is a 32 bit register
 	if (PARAM2.value > 31) {
 		state = INVALID_REG;
 		return;
@@ -71,7 +71,7 @@ void andi_immd_assm(void) {
 	// Set Rt
 	setBits_num(20, PARAM1.value, 5);
 
-	// Set Rd
+	// Set Rs
 	setBits_num(25, PARAM2.value, 5);
 
 	// Set immediate
