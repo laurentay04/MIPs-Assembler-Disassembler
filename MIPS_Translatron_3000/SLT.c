@@ -81,6 +81,9 @@ void slt_reg_assm(void) {
 	// set Rt
 	setBits_num(20, PARAM3.value, 5);
 
+	// added in shamt
+	setBits_num(10,0,5);
+
 	// tell the system the encoding is done
 	state = COMPLETE_ENCODE;
 }
@@ -112,9 +115,9 @@ void slt_reg_bin(void) {
 	setOp("SLT");
 	//setCond_num(cond);
 	//setParam(param_num, param_type, param_value)
-	setParam(1, REGISTER, Rs); //destination
-	setParam(2, REGISTER, Rt); //first source register operand
-	setParam(3, REGISTER, Rd); //second source register operand
+	setParam(2, REGISTER, Rs); //destination
+	setParam(3, REGISTER, Rt); //first source register operand
+	setParam(1, REGISTER, Rd); //second source register operand
 
 	// tell the system the decoding is done
 	state = COMPLETE_DECODE;
