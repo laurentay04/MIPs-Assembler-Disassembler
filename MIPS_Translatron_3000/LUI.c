@@ -17,12 +17,8 @@ void lui_immd_assm(void) {
 	if (PARAM1.type != REGISTER) {
 		state = MISSING_REG;
 		return;
-	}
-	if (PARAM2.type != REGISTER) {
-		state = MISSING_REG;
-		return;
-	}
-	if (PARAM3.type != IMMEDIATE) {
+	}											// Removed extra PARAM type that corresponded with Rs, since LUI does not need Rs
+	if (PARAM2.type != IMMEDIATE) {
 		state = INVALID_PARAM;
 		return;
 	}
@@ -31,19 +27,16 @@ void lui_immd_assm(void) {
 		state = INVALID_REG;
 		return;
 	}
-	if (PARAM2.value > 31) {
-		state = INVALID_REG;
-		return;
-	}
-	if (PARAM3.value > 0xFFFF) {
+	//removed original PARAM2 value test
+	if (PARAM2.value > 0xFFFF) {
 		state = INVALID_IMMED;
 		return;
 	}
 
-	setBits_str(31, "001111");
-	setBits_num(20, PARAM1.value, 5);
-	setBits_num(25, PARAM2.value, 5);
-	setBits_num(15, PARAM3.value, 16);
+	setBits_str(31, "001111");			// opcode
+	setBits_num(20, PARAM1.value, 5); // rt
+	setBits_num(25, 0, 5);			// changed PARAM2.value to 0 because Rs is 0 for LUI
+	setBits_num(15, PARAM2.value, 16); // immediate (changed from PARAM3 to PARAM2)
 
 	state = COMPLETE_ENCODE;
 }
@@ -53,18 +46,14 @@ void lui_immd_bin(void) {
 		state = WRONG_COMMAND;
 		return;
 	}
-
-	uint32_t Rs = getBits(25, 5);
+	// removed uint32_t Rs since it is not used
 	uint32_t Rt = getBits(20, 5);
 	uint32_t imm16 = getBits(15, 16);
 
 	setOp("LUI");
+
 	setParam(1, REGISTER, Rt); 
-	setParam(2, REGISTER, Rs); 
-	setParam(3, IMMEDIATE, imm16); 
+	setParam(2, IMMEDIATE, imm16); 
 
 	state = COMPLETE_DECODE;
 }
-
-
-
