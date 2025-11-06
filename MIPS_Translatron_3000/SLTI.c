@@ -8,7 +8,7 @@
 
 #include "Instruction.h"
 
-void slti_reg_assm(void) {
+void slti_immd_assm(void) {
 	// Checking that the op code matches
 	// strcmp(string1, string2) return 0 if they match
 	if (strcmp(OP_CODE, "SLTI") != 0) {
@@ -81,7 +81,7 @@ void slti_reg_assm(void) {
 	state = COMPLETE_ENCODE;
 }
 
-void slti_reg_bin(void) {
+void slti_immd_bin(void) {
 	// Check if the op code bits match
 	// check_bits(start_bit, bit_string) returns 0 if the bit_string matches
 	//  any x will be skipped
