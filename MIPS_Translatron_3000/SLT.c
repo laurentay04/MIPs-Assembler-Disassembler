@@ -5,6 +5,7 @@
 * MIPS-Translatron 3000
 */
 // edited by Jonathan Panah
+
 #include "Instruction.h"
 
 void slt_reg_assm(void) {
@@ -63,6 +64,7 @@ void slt_reg_assm(void) {
 	/*
 		Putting the binary together
 	*/
+
 	// order before changes was, opcode funct Rd Rs Rt, so I fixed the order of them to the correct opcode Rs Rt Rd funct
 	// I also changed the bit # from 20 for Rd to 15 and Rt from 15 to 20
 
