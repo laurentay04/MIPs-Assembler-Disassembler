@@ -70,7 +70,7 @@ void ori_immd_assm(void) {
 	// Set the opcode
 	setBits_str(31, "001101");
 
-	// Set Rd
+	// Set Rt
 	setBits_num(20, PARAM1.value, 5);
 
 	// Set Rs
@@ -101,7 +101,7 @@ void ori_immd_bin(void) {
 
 	// getBits(start_bit, width)
 	uint32_t Rs = getBits(25, 5);
-	uint32_t Rd = getBits(20, 5);
+	uint32_t Rt = getBits(20, 5);
 	uint32_t imm16 = getBits(15, 16);
 
 
@@ -112,7 +112,7 @@ void ori_immd_bin(void) {
 	setOp("ORI");
 	//setCond_num(cond);
 	//setParam(param_num, param_type, param_value)
-	setParam(1, REGISTER, Rd); //destination
+	setParam(1, REGISTER, Rt); //destination
 	setParam(2, REGISTER, Rs); //first source register operand
 	setParam(3, IMMEDIATE, imm16); //immediate operand
 
