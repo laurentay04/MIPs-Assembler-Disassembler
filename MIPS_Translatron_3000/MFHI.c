@@ -42,14 +42,14 @@ void mfhi_reg_assm(void) {
 	*/
 	// Set the opcode
 	setBits_str(31, "000000");
-	// Set the funct 
-	setBits_str(5, "010000");
+	// Set the funct 						// This Section was reorganized to match the rest of files Opcode - Func - Reg field - shamt
+	setBits_str(5, "010000");				// OpCode needed to be corrected
 	// set rd
 	setBits_num(15, PARAM1.value, 5);
 
 	// set 25-16 as 0s 
-	setBits_str(20, "00000");
-	setBits_str(25, "00000");
+	setBits_str(20, "00000");				// These Are from 25-21, then 20-16, and they should only be 5 digits
+	setBits_str(25, "00000");				// 10-6 do not need to be set, always shamt
 
 	// tell the system the encoding is done
 	state = COMPLETE_ENCODE;
@@ -63,16 +63,16 @@ void mfhi_reg_bin(void) {
 	if (checkBits(31, "000000") != 0 || checkBits(5, "010000") != 0 || checkBits(25, "0000000000") != 0 || checkBits(10, "00000") != 0) {
 		state = WRONG_COMMAND;
 		return;
-	}
+	}												// ^^Function Feild needed to be Corrected
 
 	// If the op code bits match, then the rest can be read as correctly
 
 	/*
 		Finding values in the binary
 	*/
-
 	// getBits(start_bit, width)
 	uint32_t Rd = getBits(15, 5);
+
 	/*
 		Setting Instuciton values
 	*/
