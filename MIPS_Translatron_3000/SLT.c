@@ -27,13 +27,13 @@ void slt_reg_assm(void) {
 		return;
 	}
 
-	// This is AND register, so param 2 needs to be a register
+	// Param 2 needs to be a register
 	if (PARAM2.type != REGISTER) {
 		state = MISSING_REG;
 		return;
 	}
 
-	// This is AND register, so param 3 needs to be a register
+	// Param 3 needs to be a register
 	if (PARAM3.type != REGISTER) {
 		state = MISSING_REG;
 		return;
@@ -111,7 +111,7 @@ void slt_reg_bin(void) {
 	uint32_t Rd = getBits(15, 5);
 
 	/*
-		Setting Instuciton values
+		Setting Instruction values
 	*/
 
 	setOp("SLT");
@@ -127,3 +127,4 @@ void slt_reg_bin(void) {
 
 
 	
+
